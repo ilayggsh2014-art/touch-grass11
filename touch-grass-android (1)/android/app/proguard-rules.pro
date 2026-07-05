@@ -1,0 +1,2 @@
+-keep class app.touchgrass.** { *; }
+-keep class com.getcapacitor.** { *; }
