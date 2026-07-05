@@ -19,14 +19,19 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
+    - name: Force Clean Gradle Properties
+      run: |
+        echo "android.useAndroidX=true" > "touch-grass-android (1)/android/gradle.properties"
+        echo "android.enableJetifier=true" >> "touch-grass-android (1)/android/gradle.properties"
+        echo "kotlin.code.style=official" >> "touch-grass-android (1)/android/gradle.properties"
+
     - name: Change wrapper permissions
       run: chmod +x "touch-grass-android (1)/android/gradlew"
 
     - name: Build Debug APK
       run: |
         cd "touch-grass-android (1)/android"
-        export GRADLE_OPTS=""
-        ./gradlew assembleDebug -Dorg.gradle.jvmargs="-Xmx2048m"
+        ./gradlew assembleDebug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
