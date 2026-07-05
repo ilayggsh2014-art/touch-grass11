@@ -25,7 +25,7 @@ jobs:
     - name: Build Debug APK
       run: |
         cd "touch-grass-android (1)/android"
-        ./gradlew assembleDebug
+        ./gradlew assembleDebug -Dorg.gradle.jvmargs="-Xmx2048m"
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
